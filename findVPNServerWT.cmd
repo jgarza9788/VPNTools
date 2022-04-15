@@ -1,0 +1,1 @@
+start /MIN cmd /c "wt D:\Scripts\findVPNServer\findVPNServer.bat"
