@@ -46,6 +46,7 @@ this file...silly goose
 logs when `findVPNServer.bat` is ran. (i.e. date,time. what VPN, and pingtime)
 ### Server recommended by NordVPN - NordVPN.url
 link to nord's website
+download the "OpenVPN UDP" one
 ### server_files.py
 this will take the files i download from the nordVPN website and edit them and place them in the output folder
 ### wt_launcher.cmd

@@ -30,11 +30,11 @@ with open(connection_file,'w') as f:
 shutil.move(connection_file, output_folder)
 
 # x = 'us' + str(server_num)
-down_file0 = r'D:\Scripts\findVPNServer\templates\{0}.nordvpn.com.udp_down.bat'.format('x')
+down_file0 = r'C:\Users\JGarza\GitHub\VPNTools\templates\{0}.nordvpn.com.udp_down.bat'.format('x')
 down_file1 = os.path.join(output_folder,'{0}.nordvpn.com.udp_down.bat'.format(server_id))
 shutil.copy(down_file0, down_file1)
 
-up_file0 = r'D:\Scripts\findVPNServer\templates\{0}.nordvpn.com.udp_up.bat'.format('x')
+up_file0 = r'C:\Users\JGarza\GitHub\VPNTools\templates\{0}.nordvpn.com.udp_up.bat'.format('x')
 up_file1 = os.path.join(output_folder,'{0}.nordvpn.com.udp_up.bat'.format(server_id))
 shutil.copy(up_file0, up_file1)
 
