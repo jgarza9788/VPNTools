@@ -2,7 +2,7 @@ import os
 import shutil
 
 downloads = r'C:\Users\JGarza\Downloads'
-output_folder = r'D:\Scripts\findVPNServer\output' 
+output_folder = r'C:\Users\JGarza\GitHub\VPNTools\output' 
 connection_file = ''
 server_id = ''
 
