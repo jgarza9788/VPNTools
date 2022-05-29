@@ -5,7 +5,7 @@ taskkill /IM openvpnserv.exe /f
 
 timeout 10
 
-set VPN=us5861
+set VPN=us8479
 set Result=1000
 
 ECHO OFF
@@ -23,21 +23,25 @@ ECHO OFF
 :: CALL :TestVPN us6754
 :: CALL :TestVPN us8631
 :: CALL :TestVPN us5577
-CALL :TestVPN us5390
-CALL :TestVPN us5861
-CALL :TestVPN us5114
-CALL :TestVPN us5850
-CALL :TestVPN us5851
-CALL :TestVPN us6757
-CALL :TestVPN us6751
-CALL :TestVPN us6752
-CALL :TestVPN us8564
-CALL :TestVPN us9402
-CALL :TestVPN us8635
-CALL :TestVPN us5729
-CALL :TestVPN us8603
-CALL :TestVPN us9409
-CALL :TestVPN us5492
+:: CALL :TestVPN us5390
+:: CALL :TestVPN us5861
+:: CALL :TestVPN us5114
+:: CALL :TestVPN us5850
+:: CALL :TestVPN us5851
+:: CALL :TestVPN us6757
+:: CALL :TestVPN us6751
+:: CALL :TestVPN us6752
+:: CALL :TestVPN us8564
+:: CALL :TestVPN us9402
+:: CALL :TestVPN us8635
+:: CALL :TestVPN us5729
+:: CALL :TestVPN us8603
+:: CALL :TestVPN us9409
+:: CALL :TestVPN us5492
+CALL :TestVPN us8479
+CALL :TestVPN us8494
+CALL :TestVPN us8495
+CALL :TestVPN us9618
 
 
 ECHO ON
