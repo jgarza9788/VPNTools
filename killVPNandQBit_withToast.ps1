@@ -12,7 +12,7 @@ while($True)
 $objNotifyIcon.Icon = [System.Drawing.SystemIcons]::Information
 $objNotifyIcon.BalloonTipIcon = "Info" 
 $objNotifyIcon.BalloonTipTitle = "killed VPN and Qbit" 
-$objNotifyIcon.BalloonTipText = ""
+$objNotifyIcon.BalloonTipText = "killed VPN and Qbit"
 $objNotifyIcon.Visible = $True 
 $objNotifyIcon.ShowBalloonTip(10000)
 Start-Sleep 500
