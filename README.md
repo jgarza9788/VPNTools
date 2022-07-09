@@ -1,24 +1,25 @@
  VPNTools
 ---
-just some scripts i use to manage my VPN 
+just some scripts i use to manage my VPN  
+**this is old and needs to be updated**
 
 <!--TOC-->
 - [VPNTools](#vpntools)
 - [Files](#files)
-    - [templates](#templates)
-    - [.gitattributes](#gitattributes)
-    - [.gitignore](#gitignore)
-    - [findVPNServer.bat](#findvpnserverbat)
-    - [findVPNServerWT.cmd](#findvpnserverwtcmd)
-    - [killVPNandQBit.bat](#killvpnandqbitbat)
-    - [killVPNandQBit_withToast.ps1](#killvpnandqbit_withtoastps1)
-    - [OpenVPN-Config.lnk](#openvpn-configlnk)
-    - [output](#output)
-    - [README.md](#readmemd)
-    - [results.log](#resultslog)
-    - [Server recommended by NordVPN - NordVPN.url](#server-recommended-by-nordvpn---nordvpnurl)
-    - [server_files.py](#server_filespy)
-    - [wt_launcher.cmd](#wt_launchercmd)
+  - [templates](#templates)
+  - [.gitattributes](#gitattributes)
+  - [.gitignore](#gitignore)
+  - [findVPNServer.bat](#findvpnserverbat)
+  - [findVPNServerWT.cmd](#findvpnserverwtcmd)
+  - [killVPNandQBit.bat](#killvpnandqbitbat)
+  - [killVPNandQBit_withToast.ps1](#killvpnandqbit_withtoastps1)
+  - [OpenVPN-Config.lnk](#openvpn-configlnk)
+  - [output](#output)
+  - [README.md](#readmemd)
+  - [results.log](#resultslog)
+  - [Server recommended by NordVPN - NordVPN.url](#server-recommended-by-nordvpn---nordvpnurl)
+  - [server_files.py](#server_filespy)
+  - [wt_launcher.cmd](#wt_launchercmd)
 <!--TOC-->
 
 ## Files

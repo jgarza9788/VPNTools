@@ -103,7 +103,8 @@ def activate_vpn():
     sid = "us8479"
     low_ping = 1000
     for index,s in enumerate(sids):
-        print(s + " -- " + b.data_bar((index+ 1)/len(sids),color='green',on_color='grey'),end='\r')
+        prefix = "  " + str(index+1) + "/" + str(len(sids))
+        print(b.data_bar(text=prefix,value=(index+ 1)/len(sids),color='green',on_color='grey'),end='\r')
         r = ping_server(s)
         
         if r == None:
