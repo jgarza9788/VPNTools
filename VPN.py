@@ -14,6 +14,8 @@ sids = [
     ,"us8482"
     ,"us9616"
     ,"us8478"
+    ,"us9619"
+    ,"us8474"
 ]
 
 def run_cmd(cmd):
@@ -83,7 +85,6 @@ def activate_vpn():
     programs_to_kill = [
         "openvpn-gui.exe",
         "openvpn.exe",
-        "openvpnserv.exe",
         "qbittorrent.exe",
     ]
 
@@ -92,20 +93,17 @@ def activate_vpn():
         kill_program(p)
         print(b.slant_bar((index+ 1)/len(programs_to_kill),color='red',on_color='grey'),end='\r')
 
-    
-    print("\n")
-    for i in range(5):
-        icon = nf.icons['mdi_timer_sand']
 
-        print(b.bubble_bar(value=(i+1)/10,text=icon),end='\r')
-        time.sleep(1)
+    icon = colored(nf.icons['mdi_timer_sand'],color='green')
+    print("\n\n" + icon + "waiting 3 seconds ")
+    time.sleep(3)
     
 
-    print("\npinging servers")
+    print("\nPinging servers:")
     sid = "us8479"
     low_ping = 1000
     for index,s in enumerate(sids):
-        print(b.data_bar((index+ 1)/len(sids),color='green',on_color='grey'),end='\r')
+        print(s + " -- " + b.data_bar((index+ 1)/len(sids),color='green',on_color='grey'),end='\r')
         r = ping_server(s)
         
         if r == None:
@@ -114,7 +112,7 @@ def activate_vpn():
             low_ping = r
             sid = s
 
-    print("\nConnecting to server")
+    print("\n\nConnecting to server:")
     print(sid,low_ping)
     
     write_to_log(sid,low_ping)
