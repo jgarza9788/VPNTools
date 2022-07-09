@@ -153,13 +153,4 @@ def main():
 
 
 if __name__ == "__main__":
-    # kill_program("openvpn-gui.exe")
-    # kill_program("Calculator.exe")
-
-    # print(ping_server("us8482"))
-
-    # for i in nf.icons.keys():
-    #     if "checkbox" in i :
-    #         print( nf.icons[i],i)
-
     main()
