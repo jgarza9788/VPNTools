@@ -81,6 +81,13 @@ def connect_to_VPN(sid):
     print(text)
 
 
+def wait_seconds(s):
+    icon = colored(nf.icons['mdi_timer_sand'],color='green')
+
+    for i in range(s,0,-1):
+        print('\r', f"{icon} {str(i)}/{str(s)} seconds          ",end='',flush=True)
+        time.sleep(1)
+
 def activate_vpn():
     programs_to_kill = [
         "openvpn-gui.exe",
@@ -93,11 +100,7 @@ def activate_vpn():
         kill_program(p)
         print(b.slant_bar((index+ 1)/len(programs_to_kill),color='red',on_color='grey'),end='\r')
 
-
-    icon = colored(nf.icons['mdi_timer_sand'],color='green')
-    print("\n\n" + icon + "waiting 3 seconds ")
-    time.sleep(3)
-    
+    wait_seconds(10)
 
     print("\nPinging servers:")
     sid = "us8479"
@@ -123,7 +126,6 @@ def kill_vpn():
     programs_to_kill = [
         "openvpn-gui.exe",
         "openvpn.exe",
-        "openvpnserv.exe",
         "qbittorrent.exe",
     ]
 
@@ -154,3 +156,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    # for i in range(10,0,-1):
+    #     print('\r',str(i),end='',flush=True)
+    #     time.sleep(0.5)
+    # wait_seconds(10)

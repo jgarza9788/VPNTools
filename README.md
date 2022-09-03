@@ -1,26 +1,40 @@
- VPNTools
+VPNTools
 ---
 just some scripts i use to manage my VPN  
-**this is old and needs to be updated**
 
 <!--TOC-->
-- [VPNTools](#vpntools)
-- [Files](#files)
-  - [templates](#templates)
-  - [.gitattributes](#gitattributes)
-  - [.gitignore](#gitignore)
-  - [findVPNServer.bat](#findvpnserverbat)
-  - [findVPNServerWT.cmd](#findvpnserverwtcmd)
-  - [killVPNandQBit.bat](#killvpnandqbitbat)
-  - [killVPNandQBit_withToast.ps1](#killvpnandqbit_withtoastps1)
-  - [OpenVPN-Config.lnk](#openvpn-configlnk)
-  - [output](#output)
-  - [README.md](#readmemd)
-  - [results.log](#resultslog)
-  - [Server recommended by NordVPN - NordVPN.url](#server-recommended-by-nordvpn---nordvpnurl)
-  - [server_files.py](#server_filespy)
-  - [wt_launcher.cmd](#wt_launchercmd)
 <!--TOC-->
+
+# versions
+* [current Python version](https://github.com/jgarza9788/VPNTools)
+* [batch/cmd](https://github.com/jgarza9788/VPNTools/tree/e203c2e575159864e16a711ee72c2e0c78aeefec)
+
+# install requirements
+```
+pip install requirements.txt
+```
+
+# VPN.py
+## main()
+this function will activate or deactivate the VPN
+
+## kill_vpn()
+this will disconnect the VPN
+
+## activate_vpn()
+this will enable the VPN
+1. kill
+2. wait 
+3. ping nordVPN servers 
+4. connect to the fastest one
+
+## config.zip
+contains the config files from `C:\Program Files\OpenVPN\config`
+
+# FAQs
+1. if it doesn't look right.
+termcolor and/or nerdfonts might not work with your terminal
+
 
 ## Files
 ### templates
