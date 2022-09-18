@@ -5,17 +5,21 @@ import nerdfonts as nf
 from termcolor import colored
 from utilities import bar as b
 
+DIR = os.path.dirname(os.path.realpath(__file__))
+
 sids = [
     "us8479"
     ,"us8494"
     ,"us8495"
-    ,"us9618"
-    ,"us9612"
     ,"us8482"
-    ,"us9616"
     ,"us8478"
     ,"us9619"
     ,"us8474"
+    ,"us9615"
+    ,"us9618"
+    ,"us9612"
+    ,"us9613"
+    # ,"us9616"
 ]
 
 def run_cmd(cmd):
@@ -67,9 +71,14 @@ def write_to_log(sid,ping):
     dt = datetime.now()
     date = dt.strftime("%m/%d/%Y")
     time = dt.strftime("%H:%M:%S.%f")[:11]
-    cmd = "echo " + date +","+time+"," + sid + ".nordvpn.com.udp.ovpn," + str(ping) + ">> results.log"
-    print(cmd)
-    run_cmd(cmd)
+
+    # cmd = "echo " + date +","+time+"," + sid + ".nordvpn.com.udp.ovpn," + str(ping) + ">> results.log"
+    # print(cmd)
+    # run_cmd(cmd)
+
+    with open(os.path.join(DIR,'results.log'), 'a',encoding='UTF-8') as f:
+        f.write(date + ',' + time + ',' + sid + '.nordvpn.com.udp.ovpn,' + str(ping) + '\n')
+    
 
 def connect_to_VPN(sid):
     cmd = "\"C:\\Program Files\\OpenVPN\\bin\\openvpn-gui.exe\" --connect {0}.nordvpn.com.udp.ovpn"
@@ -138,6 +147,20 @@ def kill_vpn():
     text = colored(text,color='green')
     print(text)
 
+def ping_all():
+
+    pings = []
+    for s in sids:
+        r = ping_server(s)
+        print(s,r)
+        pings.append(r)
+        # write_to_log(s,r)
+    
+    print()
+    print('Avg ping: ', '{:.2f}'.format(sum(pings)/len(pings)))
+    print('Max ping: ', max(pings))
+    print('Min ping: ', min(pings))
+
 
 def main():
     print(*sys.argv,sep='\n')
@@ -147,6 +170,8 @@ def main():
             activate_vpn()
         elif sys.argv[1].upper() in ["DISCONNECT","DEACTIVATE","KILL","0"]:
             kill_vpn()
+        elif sys.argv[1].upper() in ["PING","PING_ALL","2"]:
+            ping_all()
     except Exception as e:
         e = colored(nf.icons["mdi_close_box"] + str(e),color='red')
         print(e)
@@ -156,6 +181,27 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    # pings = []
+    # for i in range(8400,9699,1):
+    #     try:
+    #         s = 'us'+str(i)
+    #         r = ping_server(s)
+    #         pings.append(r)
+    #         print(s,r)
+    #     except:
+    #         pass
+    # print()
+    # print('Avg ping: ', '{:.2f}'.format(sum(pings)/len(pings)))
+    # print('Max ping: ', max(pings))
+    # print('Min ping: ', min(pings))
+    # input()
+
+
+    # for s in sids:
+    #     r = ping_server(s)
+    #     print(s,r)
+    #     write_to_log(s,r)
 
     # for i in range(10,0,-1):
     #     print('\r',str(i),end='',flush=True)
