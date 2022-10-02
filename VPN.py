@@ -119,7 +119,7 @@ def activate_vpn():
         print(b.data_bar(text=prefix,value=(index+ 1)/len(sids),color='green',on_color='grey'),end='\r')
         r = ping_server(s)
         
-        if r == None:
+        if r == None or r == False:
             continue
         elif r < low_ping:
             low_ping = r
@@ -136,6 +136,8 @@ def kill_vpn():
         "openvpn-gui.exe",
         "openvpn.exe",
         "qbittorrent.exe",
+        # "EpicGamesLauncher.exe",
+        # "steam.exe"
     ]
 
     for index,p in enumerate(programs_to_kill):
