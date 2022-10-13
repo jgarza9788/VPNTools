@@ -19,12 +19,11 @@ sids = [
     ,"us9618"
     ,"us9612"
     ,"us9613"
-    # ,"us9616"
+    ,"us9615"
 ]
 
 def run_cmd(cmd):
     return subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-
 
 def kill_program(name,verbose=False):
 
@@ -47,7 +46,6 @@ def kill_program(name,verbose=False):
     else:
         icon = nf.icons["mdi_close_box"]
         print(colored(f" {icon} {name} was not killed",color="red"))
-
 
 def ping_server(sid):
 
@@ -79,7 +77,6 @@ def write_to_log(sid,ping):
     with open(os.path.join(DIR,'results.log'), 'a',encoding='UTF-8') as f:
         f.write(date + ',' + time + ',' + sid + '.nordvpn.com.udp.ovpn,' + str(ping) + '\n')
     
-
 def connect_to_VPN(sid):
     cmd = "\"C:\\Program Files\\OpenVPN\\bin\\openvpn-gui.exe\" --connect {0}.nordvpn.com.udp.ovpn"
     cmd = cmd.format(sid)
@@ -88,7 +85,6 @@ def connect_to_VPN(sid):
     text = nf.icons['fa_check'] + " " + sid + ".nordvpn.com" 
     text = colored(text,color='green')
     print(text)
-
 
 def wait_seconds(s):
     icon = colored(nf.icons['mdi_timer_sand'],color='green')
