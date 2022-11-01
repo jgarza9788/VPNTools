@@ -7,6 +7,7 @@ from utilities import bar as b
 
 DIR = os.path.dirname(os.path.realpath(__file__))
 
+# these are the server ids 
 sids = [
     "us8479"
     ,"us8494"
@@ -22,8 +23,41 @@ sids = [
     ,"us9615"
 ]
 
+vpn_programs = [
+    "openvpn-gui.exe",
+    "openvpn.exe",
+    "qbittorrent.exe",
+    ]
+
 def run_cmd(cmd):
     return subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+
+    # result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+
+    # output, error = result.communicate()
+
+    # if error == None:
+    #     return output
+    # else:
+    #     print("error:")
+    #     print(error)
+    #     return None
+
+def VPN_running():
+    rc = run_cmd("tasklist")
+    # print(rc.stdout.read())
+    # print(rc.wait())
+
+    rc = str(rc.stdout.read())
+    
+    status = False
+
+    for p in vpn_programs:
+        if p in rc:
+            status = True
+    
+    return status
+
 
 def kill_program(name,verbose=False):
 
@@ -32,7 +66,7 @@ def kill_program(name,verbose=False):
         cmd = f"taskkill /IM {name} /f"
         p = run_cmd(cmd)
         text = str(p.stdout.read())
-        retcode = p.wait()
+        status = p.wait()
     except:
         pass
 
@@ -40,12 +74,14 @@ def kill_program(name,verbose=False):
         print(name)
         print(text)
 
-    if retcode == 0:
-        icon = nf.icons["mdi_checkbox_marked"]
-        print(colored(f" {icon} {name} was killed",color="green"))
-    else:
-        icon = nf.icons["mdi_close_box"]
-        print(colored(f" {icon} {name} was not killed",color="red"))
+    if verbose:
+        if status == 0:
+            
+            icon = nf.icons["mdi_checkbox_marked"]
+            print(colored(f" {icon} {name} was killed",color="green"))
+        else:
+            icon = nf.icons["mdi_close_box"]
+            print(colored(f" {icon} {name} was not killed",color="red"))
 
 def ping_server(sid):
 
@@ -94,18 +130,13 @@ def wait_seconds(s):
         time.sleep(1)
 
 def activate_vpn():
-    programs_to_kill = [
-        "openvpn-gui.exe",
-        "openvpn.exe",
-        "qbittorrent.exe",
-    ]
 
-    print("\nkilling programs")
-    for index,p in enumerate(programs_to_kill):
-        kill_program(p)
-        print(b.slant_bar((index+ 1)/len(programs_to_kill),color='red',on_color='grey'),end='\r')
-
-    wait_seconds(10)
+    if VPN_running() ==  True:
+        print("\nkilling old VPN, and will rerun")
+        for index,p in enumerate(vpn_programs):
+            kill_program(p)
+            print(b.slant_bar((index+ 1)/len(vpn_programs),color='red',on_color='grey'),end='\r')
+        wait_seconds(10)
 
     print("\nPinging servers:")
     sid = "us8479"
@@ -128,20 +159,13 @@ def activate_vpn():
     connect_to_VPN(sid)
 
 def kill_vpn():
-    programs_to_kill = [
-        "openvpn-gui.exe",
-        "openvpn.exe",
-        "qbittorrent.exe",
-        # "EpicGamesLauncher.exe",
-        # "steam.exe"
-    ]
 
-    for index,p in enumerate(programs_to_kill):
+    for index,p in enumerate(vpn_programs):
         kill_program(p)
-        print(b.slant_bar((index+ 1)/len(programs_to_kill),color='red',on_color='grey'),end='\r')
+        print(b.slant_bar((index+ 1)/len(vpn_programs),color='red',on_color='grey'),end='\r')
     print()
 
-    text = nf.icons['fa_check'] + " VPN is off" 
+    text = nf.icons['fa_check'] + " VPN was killed" 
     text = colored(text,color='green')
     print(text)
 
@@ -158,7 +182,6 @@ def ping_all():
     print('Avg ping: ', '{:.2f}'.format(sum(pings)/len(pings)))
     print('Max ping: ', max(pings))
     print('Min ping: ', min(pings))
-
 
 def main():
     print(*sys.argv,sep='\n')
@@ -179,29 +202,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-    # pings = []
-    # for i in range(8400,9699,1):
-    #     try:
-    #         s = 'us'+str(i)
-    #         r = ping_server(s)
-    #         pings.append(r)
-    #         print(s,r)
-    #     except:
-    #         pass
-    # print()
-    # print('Avg ping: ', '{:.2f}'.format(sum(pings)/len(pings)))
-    # print('Max ping: ', max(pings))
-    # print('Min ping: ', min(pings))
-    # input()
-
-
-    # for s in sids:
-    #     r = ping_server(s)
-    #     print(s,r)
-    #     write_to_log(s,r)
-
-    # for i in range(10,0,-1):
-    #     print('\r',str(i),end='',flush=True)
-    #     time.sleep(0.5)
-    # wait_seconds(10)
+#    print(VPN_running())
