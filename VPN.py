@@ -32,21 +32,9 @@ vpn_programs = [
 def run_cmd(cmd):
     return subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
 
-    # result = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-
-    # output, error = result.communicate()
-
-    # if error == None:
-    #     return output
-    # else:
-    #     print("error:")
-    #     print(error)
-    #     return None
 
 def VPN_running():
     rc = run_cmd("tasklist")
-    # print(rc.stdout.read())
-    # print(rc.wait())
 
     rc = str(rc.stdout.read())
     
