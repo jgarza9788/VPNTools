@@ -10,17 +10,14 @@ DIR = os.path.dirname(os.path.realpath(__file__))
 # these are the server ids 
 sids = [
     "us8479"
+    ,"us8478"
+    ,"us8484"
     ,"us8494"
-    ,"us8495"
     ,"us8482"
     ,"us8478"
-    ,"us9619"
     ,"us8474"
-    ,"us9615"
-    ,"us9618"
-    ,"us9612"
-    ,"us9613"
-    ,"us9615"
+    # ,"us9618"
+    # ,"us9612"
 ]
 
 vpn_programs = [
@@ -161,15 +158,22 @@ def ping_all():
 
     pings = []
     for s in sids:
-        r = ping_server(s)
-        print(s,r)
-        pings.append(r)
+        try:
+            r = ping_server(s)
+            print(s,r)
+
+            pings.append(r)
+        except:
+            pass
+
         # write_to_log(s,r)
     
     print()
     print('Avg ping: ', '{:.2f}'.format(sum(pings)/len(pings)))
     print('Max ping: ', max(pings))
     print('Min ping: ', min(pings))
+
+    input("press enter to return to main menu")
 
 def main():
     print(*sys.argv,sep='\n')
@@ -190,4 +194,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    # ping_all()
+
 #    print(VPN_running())

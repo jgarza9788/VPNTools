@@ -21,6 +21,10 @@ menu = [
             "action": VPN.VPN_running
         },
         {
+            "display_name": "ping all VPN servers",
+            "action": VPN.ping_all
+        },
+        {
             "display_name": "quit",
             "action": void_function
         }
