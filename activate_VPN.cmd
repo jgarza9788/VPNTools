@@ -1,1 +1,1 @@
-start wt -p "pwsh" py C:\Users\JGarza\GitHub\VPNTools\VPN.py "activate"
+start wt -p "pwsh" python C:\Users\JGarza\GitHub\VPNTools\VPN.py "activate"
