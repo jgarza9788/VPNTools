@@ -190,7 +190,15 @@ def main():
         e = colored(nf.icons["mdi_close_box"] + str(e),color='red')
         print(e)
 
-    input()
+    time.sleep(60)
+
+    if len(sys.argv) > 2:
+        if sys.argv[2].upper() in ["CLOSE","C"]:
+            print('closing...')
+        else:
+            input()
+    else:
+        input()
 
 
 if __name__ == "__main__":
