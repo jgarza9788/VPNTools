@@ -1,6 +1,12 @@
-VPNTools
+VPNTools **OBSOLITE**
 ---
 just some scripts i use to manage my VPN  (NordVPN)
+
+
+# **THIS IS OBSOLITE**
+this tool is no longer being used by it's author.  
+
+
 
 <!--TOC-->
 <!--TOC-->

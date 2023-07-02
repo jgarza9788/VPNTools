@@ -9,14 +9,17 @@ DIR = os.path.dirname(os.path.realpath(__file__))
 
 # these are the server ids 
 sids = [
-    "us8479"
-    ,"us8478"
-    ,"us8484"
-    ,"us8494"
-    ,"us8482"
-    ,"us8478"
-    ,"us8474"
-    ,"us8497"
+    "us8493",
+    # "us8479"
+    # ,"us8478"
+    # ,"us8484"
+    # ,"us8494"
+    # ,"us8482"
+    # ,"us8478"
+    # ,"us8474"
+    # ,"us8497"
+    # "us10029"
+    # ,"us10021"
     # ,"us9618"
     # ,"us9612"
 ]
@@ -190,7 +193,15 @@ def main():
         e = colored(nf.icons["mdi_close_box"] + str(e),color='red')
         print(e)
 
-    input()
+    time.sleep(60)
+
+    if len(sys.argv) > 2:
+        if sys.argv[2].upper() in ["CLOSE","C"]:
+            print('closing...')
+        else:
+            input()
+    else:
+        input()
 
 
 if __name__ == "__main__":
